@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -18,7 +17,7 @@ module.exports = {
       }
     ]
   },
-  resolve: { extensions: ["*", ".tsx", ".ts", "js"] },
+  resolve: { extensions: [".wasm", ".tsx", ".ts",  ".mjs", ".cjs", ".js", ".json"] },
   output: {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist/",
@@ -29,8 +28,6 @@ module.exports = {
       directory: path.join(__dirname, "public/"),
       publicPath: "/",
     },
-    port: 3000,
-    hot: true
-  },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+    port: 3000
+  }
 };
