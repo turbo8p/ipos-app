@@ -1,10 +1,15 @@
 import React from "react";
 
+type IScreenProp = {
+    children: string
+}
 
-function Screen() {
+function Screen(props: IScreenProp) {
+    const displayNumber = Number(props.children).toFixed(2);
+    
     return(
-        <div>
-            Screen....
+        <div className="calculator-screen">
+            {props.children}
         </div>
     );
 }

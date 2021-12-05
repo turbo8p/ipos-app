@@ -19,3 +19,7 @@
     border-left: 0px;
     border-right: 0px;
 }
+
+.no-top-border {
+    border-top: 0px;
+}
