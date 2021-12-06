@@ -5,8 +5,6 @@ type IScreenProp = {
 }
 
 function Screen(props: IScreenProp) {
-    const displayNumber = Number(props.children).toFixed(2);
-    
     return(
         <div className="calculator-screen">
             {props.children}
