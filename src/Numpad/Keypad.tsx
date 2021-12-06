@@ -1,12 +1,12 @@
 import React from "react";
-import "./Button.css";
-type IButtonProps = {
+import "./Keypad.css";
+type IKeypadProps = {
     children: string,
     className?: string,
     onClick?: (inputNumber: string) => void
 }
 
-function Button (props: IButtonProps) {
+function Keypad (props: IKeypadProps) {
     const handleClick = () => {
         if(!props.onClick) {
             return;
@@ -21,4 +21,4 @@ function Button (props: IButtonProps) {
     );
 }
 
-export default Button;
+export default Keypad;

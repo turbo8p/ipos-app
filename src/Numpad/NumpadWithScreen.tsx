@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
-import Button from "./Button";
+import Keypad from "./Keypad";
 import Screen from "./Screen";
-import "./Calculator.css";
+import "./NumpadWithScreen.css";
 
 type ICalculatorProp = {
   maxDigits?: number;
@@ -62,52 +62,52 @@ function Calculator(props: ICalculatorProp) {
   return (
     <div>
       <Screen>{`${numberOnScreen}`}</Screen>
-      <Button onClick={handleInputButtonClick}>7</Button>
-      <Button className="no-side-borders" onClick={handleInputButtonClick}>
+      <Keypad onClick={handleInputButtonClick}>7</Keypad>
+      <Keypad className="no-side-borders" onClick={handleInputButtonClick}>
         8
-      </Button>
-      <Button onClick={handleInputButtonClick} className="no-right-border">9</Button>
-      <Button onClick={handleOnBackspaceClick}>←</Button>
+      </Keypad>
+      <Keypad onClick={handleInputButtonClick} className="no-right-border">9</Keypad>
+      <Keypad onClick={handleOnBackspaceClick}>←</Keypad>
       <br />
-      <Button onClick={handleInputButtonClick} className="no-top-border">
+      <Keypad onClick={handleInputButtonClick} className="no-top-border">
         4
-      </Button>
-      <Button
+      </Keypad>
+      <Keypad
         className="no-side-borders no-top-border"
         onClick={handleInputButtonClick}
       >
         5
-      </Button>
-      <Button onClick={handleInputButtonClick} className="no-top-border">
+      </Keypad>
+      <Keypad onClick={handleInputButtonClick} className="no-top-border">
         6
-      </Button>
-      <Button onClick={handleClearButtonClick} className="no-left-border no-top-border">C</Button>
+      </Keypad>
+      <Keypad onClick={handleClearButtonClick} className="no-left-border no-top-border">C</Keypad>
       <br />
-      <Button onClick={handleInputButtonClick} className="no-top-border">
+      <Keypad onClick={handleInputButtonClick} className="no-top-border">
         1
-      </Button>
-      <Button
+      </Keypad>
+      <Keypad
         className="no-side-borders no-top-border"
         onClick={handleInputButtonClick}
       >
         2
-      </Button>
-      <Button onClick={handleInputButtonClick} className="no-top-border">
+      </Keypad>
+      <Keypad onClick={handleInputButtonClick} className="no-top-border">
         3
-      </Button>
-      <Button onClick={handleExactButtonClick} className="no-top-border no-left-border">
+      </Keypad>
+      <Keypad onClick={handleExactButtonClick} className="no-top-border no-left-border">
         ˩
-      </Button>
+      </Keypad>
       <br />
-      <Button onClick={handleInputButtonClick} className="no-top-border">
+      <Keypad onClick={handleInputButtonClick} className="no-top-border">
         0
-      </Button>
-      <Button
+      </Keypad>
+      <Keypad
         className="no-left-border no-top-border"
         onClick={handleInputButtonClick}
       >
         .
-      </Button>
+      </Keypad>
     </div>
   );
 }
