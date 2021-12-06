@@ -61,8 +61,6 @@ function Calculator(props: ICalculatorProp) {
 
   return (
     <div>
-      My calculator
-      <br />
       <Screen>{`${numberOnScreen}`}</Screen>
       <Button onClick={handleInputButtonClick}>7</Button>
       <Button className="no-side-borders" onClick={handleInputButtonClick}>
