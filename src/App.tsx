@@ -6,7 +6,7 @@ function App () {
   return(
     <div className="App">
       <h1> Hello, World! </h1>
-      <Calculator />
+      <Calculator exact={'25.5'} />
     </div>
   );
 }

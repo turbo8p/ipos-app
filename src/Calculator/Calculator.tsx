@@ -6,12 +6,13 @@ import "./Calculator.css";
 type ICalculatorProp = {
   maxDigits?: number;
   maxFractionalDigits?: number;
+  exact?: string
 };
 
 function Calculator(props: ICalculatorProp) {
   const initialNumberOnScreen = "0";
   const [numberOnScreen, setNumberOnScreen] = useState(initialNumberOnScreen);
-  const { maxDigits = 6, maxFractionalDigits = 2 } = props;
+  const { maxDigits = 6, maxFractionalDigits = 2, exact = initialNumberOnScreen } = props;
 
   const handleInputButtonClick = useCallback((input: string) => {
     setNumberOnScreen((numberOnScreen) => {
@@ -40,7 +41,13 @@ function Calculator(props: ICalculatorProp) {
     });
   }, []);
 
-  const handleCalculateButtonClick = useCallback(() => {}, []);
+  const handleClearButtonClick = useCallback(() => {
+    setNumberOnScreen(initialNumberOnScreen);
+  }, []);
+
+  const handleExactButtonClick = useCallback(() => {
+      setNumberOnScreen(exact)
+  }, []);
 
   const handleOnBackspaceClick = useCallback(() => {
     setNumberOnScreen((numberOnScreen) => {
@@ -61,7 +68,7 @@ function Calculator(props: ICalculatorProp) {
       <Button className="no-side-borders" onClick={handleInputButtonClick}>
         8
       </Button>
-      <Button onClick={handleInputButtonClick}>9</Button>
+      <Button onClick={handleInputButtonClick} className="no-right-border">9</Button>
       <Button onClick={handleOnBackspaceClick}>←</Button>
       <br />
       <Button onClick={handleInputButtonClick} className="no-top-border">
@@ -76,6 +83,7 @@ function Calculator(props: ICalculatorProp) {
       <Button onClick={handleInputButtonClick} className="no-top-border">
         6
       </Button>
+      <Button onClick={handleClearButtonClick} className="no-left-border no-top-border">C</Button>
       <br />
       <Button onClick={handleInputButtonClick} className="no-top-border">
         1
@@ -89,18 +97,18 @@ function Calculator(props: ICalculatorProp) {
       <Button onClick={handleInputButtonClick} className="no-top-border">
         3
       </Button>
+      <Button onClick={handleExactButtonClick} className="no-top-border no-left-border">
+        ˩
+      </Button>
       <br />
       <Button onClick={handleInputButtonClick} className="no-top-border">
         0
       </Button>
       <Button
-        className="no-side-borders no-top-border"
+        className="no-left-border no-top-border"
         onClick={handleInputButtonClick}
       >
         .
-      </Button>
-      <Button onClick={handleCalculateButtonClick} className="no-top-border">
-        =
       </Button>
     </div>
   );
