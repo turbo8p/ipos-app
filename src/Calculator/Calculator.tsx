@@ -34,7 +34,7 @@ function Calculator(props: ICalculatorProp) {
       if (numberOnScreen === "0" && input === "0") {
         return numberOnScreen;
       }
-      if (numberOnScreen === "0" && input !== "0") {
+      if (numberOnScreen === "0" && input !== "0" && input !== '.') {
         return input;
       }
       return numberOnScreen + input;
