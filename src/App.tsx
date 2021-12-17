@@ -1,12 +1,14 @@
 import React from "react";
 import "./App.css";
-import Calculator from  './Calculator/Calculator';
+import NumpadWithScreen from "./Numpad/NumpadWithScreen";
 
-function App () {
-  return(
+function App() {
+  const total = "25.5";
+  return (
     <div className="App">
       <h1> Hello, World! </h1>
-      <Calculator />
+      <h2>Total: {total}</h2>
+      <NumpadWithScreen exact={total} />
     </div>
   );
 }
