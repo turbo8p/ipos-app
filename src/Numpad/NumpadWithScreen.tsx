@@ -20,13 +20,6 @@ function Calculator(props: ICalculatorProp) {
 
   const handleInputButtonClick = useCallback((input: string) => {
     setNumberOnScreen((numberOnScreen) => {
-      if (
-        numberOnScreen.indexOf(".") === -1 &&
-        numberOnScreen.length >= maxDigits &&
-        input !== "."
-      ) {
-        return numberOnScreen;
-      }
       const [, fractionalPart] = numberOnScreen.split(".");
       if (fractionalPart?.length >= maxFractionalDigits) {
         return numberOnScreen;
