@@ -4,4 +4,4 @@
       ["@babel/typescript", {"allowNamespaces": true}],
       "@babel/react"
     ]
-  }
+}
