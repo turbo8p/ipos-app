@@ -6,13 +6,17 @@ import "./NumpadWithScreen.css";
 type ICalculatorProp = {
   maxDigits?: number;
   maxFractionalDigits?: number;
-  exact?: string
+  exact?: string;
 };
 
 function Calculator(props: ICalculatorProp) {
   const initialNumberOnScreen = "0";
   const [numberOnScreen, setNumberOnScreen] = useState(initialNumberOnScreen);
-  const { maxDigits = 6, maxFractionalDigits = 2, exact = initialNumberOnScreen } = props;
+  const {
+    maxDigits = 6,
+    maxFractionalDigits = 2,
+    exact = initialNumberOnScreen,
+  } = props;
 
   const handleInputButtonClick = useCallback((input: string) => {
     setNumberOnScreen((numberOnScreen) => {
@@ -34,7 +38,7 @@ function Calculator(props: ICalculatorProp) {
       if (numberOnScreen === "0" && input === "0") {
         return numberOnScreen;
       }
-      if (numberOnScreen === "0" && input !== "0" && input !== '.') {
+      if (numberOnScreen === "0" && input !== "0" && input !== ".") {
         return input;
       }
       return numberOnScreen + input;
@@ -46,7 +50,7 @@ function Calculator(props: ICalculatorProp) {
   }, []);
 
   const handleExactButtonClick = useCallback(() => {
-      setNumberOnScreen(exact)
+    setNumberOnScreen(exact);
   }, []);
 
   const handleOnBackspaceClick = useCallback(() => {
@@ -62,14 +66,32 @@ function Calculator(props: ICalculatorProp) {
   return (
     <div>
       <Screen>{`${numberOnScreen}`}</Screen>
-      <Keypad onClick={handleInputButtonClick} dataTestId="num-7">7</Keypad>
-      <Keypad className="no-side-borders" onClick={handleInputButtonClick} dataTestId="num-8">
+      <Keypad onClick={handleInputButtonClick} dataTestId="num-7">
+        7
+      </Keypad>
+      <Keypad
+        className="no-side-borders"
+        onClick={handleInputButtonClick}
+        dataTestId="num-8"
+      >
         8
       </Keypad>
-      <Keypad onClick={handleInputButtonClick} className="no-right-border" dataTestId="num-9">9</Keypad>
-      <Keypad onClick={handleOnBackspaceClick} dataTestId="num-backspace">←</Keypad>
+      <Keypad
+        onClick={handleInputButtonClick}
+        className="no-right-border"
+        dataTestId="num-9"
+      >
+        9
+      </Keypad>
+      <Keypad onClick={handleOnBackspaceClick} dataTestId="num-backspace">
+        ←
+      </Keypad>
       <br />
-      <Keypad onClick={handleInputButtonClick} className="no-top-border" dataTestId="num-4">
+      <Keypad
+        onClick={handleInputButtonClick}
+        className="no-top-border"
+        dataTestId="num-4"
+      >
         4
       </Keypad>
       <Keypad
@@ -79,12 +101,26 @@ function Calculator(props: ICalculatorProp) {
       >
         5
       </Keypad>
-      <Keypad onClick={handleInputButtonClick} className="no-top-border" dataTestId="num-6">
+      <Keypad
+        onClick={handleInputButtonClick}
+        className="no-top-border"
+        dataTestId="num-6"
+      >
         6
       </Keypad>
-      <Keypad onClick={handleClearButtonClick} className="no-left-border no-top-border" dataTestId="num-cancel">C</Keypad>
+      <Keypad
+        onClick={handleClearButtonClick}
+        className="no-left-border no-top-border"
+        dataTestId="num-cancel"
+      >
+        C
+      </Keypad>
       <br />
-      <Keypad onClick={handleInputButtonClick} className="no-top-border" dataTestId="num-1">
+      <Keypad
+        onClick={handleInputButtonClick}
+        className="no-top-border"
+        dataTestId="num-1"
+      >
         1
       </Keypad>
       <Keypad
@@ -94,14 +130,26 @@ function Calculator(props: ICalculatorProp) {
       >
         2
       </Keypad>
-      <Keypad onClick={handleInputButtonClick} className="no-top-border" dataTestId="num-3">
+      <Keypad
+        onClick={handleInputButtonClick}
+        className="no-top-border"
+        dataTestId="num-3"
+      >
         3
       </Keypad>
-      <Keypad onClick={handleExactButtonClick} className="no-top-border no-left-border" dataTestId="num-exact">
+      <Keypad
+        onClick={handleExactButtonClick}
+        className="no-top-border no-left-border"
+        dataTestId="num-exact"
+      >
         ˩
       </Keypad>
       <br />
-      <Keypad onClick={handleInputButtonClick} className="no-top-border" dataTestId="num-0">
+      <Keypad
+        onClick={handleInputButtonClick}
+        className="no-top-border"
+        dataTestId="num-0"
+      >
         0
       </Keypad>
       <Keypad
