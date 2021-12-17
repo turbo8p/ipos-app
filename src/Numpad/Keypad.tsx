@@ -3,7 +3,8 @@ import "./Keypad.css";
 type IKeypadProps = {
     children: string,
     className?: string,
-    onClick?: (inputNumber: string) => void
+    onClick?: (inputNumber: string) => void,
+    dataTestId?: string
 }
 
 function Keypad (props: IKeypadProps) {
@@ -15,7 +16,7 @@ function Keypad (props: IKeypadProps) {
     };
 
     return (
-        <button className={`calculator-button ${props.className}`} onClick={handleClick}>
+        <button className={`calculator-button ${props.className}`} data-testid={props.dataTestId} onClick={handleClick}>
             {props.children}
         </button>
     );

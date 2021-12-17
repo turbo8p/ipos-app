@@ -6,7 +6,7 @@ type IScreenProp = {
 
 function Screen(props: IScreenProp) {
     return(
-        <div className="calculator-screen">
+        <div className="calculator-screen" data-testid="screen">
             {props.children}
         </div>
     );
