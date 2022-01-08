@@ -1,60 +1,81 @@
-import { Layout, Menu } from "antd";
-import { Content, Header } from "antd/lib/layout/layout";
+import { Breadcrumb, Button, Layout, Menu } from "antd";
+import { Content, Footer, Header } from "antd/lib/layout/layout";
 import Sider from "antd/lib/layout/Sider";
 import SubMenu from "antd/lib/menu/SubMenu";
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import NumpadWithScreen from "./Numpad/NumpadWithScreen";
+import {
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+  UploadOutlined,
+  DesktopOutlined,
+  PieChartOutlined,
+  TeamOutlined,
+  FileOutlined,
+} from "@ant-design/icons";
 
 function App() {
   const total = "25.5";
+  const [menuCollapsed, setMenuCollapsed] = useState(false);
+
   return (
     <React.Fragment>
-      <Layout className="layout">
+      <Layout style={{ minHeight: "100vh" }} hasSider>
         <Sider
-          width={200}
-          className="site-layout-background"
-          style={{
-            overflow: "auto",
-            height: "100vh",
-            position: "fixed",
-            left: 0,
+          collapsible
+          collapsed={menuCollapsed}
+          onCollapse={(collapsed) => {
+            setMenuCollapsed(collapsed);
           }}
         >
+          <div className="logo" />
           <Menu
-            mode="inline"
+            theme="dark"
             defaultSelectedKeys={["1"]}
-            defaultOpenKeys={["sub1"]}
-            style={{ height: "100%", borderRight: 0 }}
+            mode="inline"
+            inlineCollapsed={menuCollapsed}
           >
-            <SubMenu key="sub1" title="subnav 1">
-              <Menu.Item key="1">option1</Menu.Item>
-              <Menu.Item key="2">option2</Menu.Item>
-              <Menu.Item key="3">option3</Menu.Item>
-              <Menu.Item key="4">option4</Menu.Item>
+            <Menu.Item key="1" icon={<PieChartOutlined />}>
+              Option 1
+            </Menu.Item>
+            <Menu.Item key="2" icon={<DesktopOutlined />}>
+              Option 2
+            </Menu.Item>
+            <SubMenu key="sub1" icon={<UserOutlined />} title="User">
+              <Menu.Item key="3">Tom</Menu.Item>
+              <Menu.Item key="4">Bill</Menu.Item>
+              <Menu.Item key="5">Alex</Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" title="subnav 2">
-              <Menu.Item key="5">option5</Menu.Item>
-              <Menu.Item key="6">option6</Menu.Item>
-              <Menu.Item key="7">option7</Menu.Item>
-              <Menu.Item key="8">option8</Menu.Item>
+            <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
+              <Menu.Item key="6">Team 1</Menu.Item>
+              <Menu.Item key="8">Team 2</Menu.Item>
             </SubMenu>
-            <SubMenu key="sub3" title="subnav 3">
-              <Menu.Item key="9">option9</Menu.Item>
-              <Menu.Item key="10">option10</Menu.Item>
-              <Menu.Item key="11">option11</Menu.Item>
-              <Menu.Item key="12">option12</Menu.Item>
-            </SubMenu>
+            <Menu.Item key="9" icon={<FileOutlined />}>
+              Files
+            </Menu.Item>
           </Menu>
         </Sider>
-      </Layout>
-      <Layout className="site-layout" style={{ marginLeft: 200 }}>
-        <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
-          <div
-            className="site-layout-background"
-            style={{ padding: 24, textAlign: "center" }}
-          ></div>
-        </Content>
+        <Layout className="site-layout">
+          <Header className="site-layout-background" style={{ padding: 0 }} />
+          <Content style={{ margin: "0 16px" }}>
+            <Breadcrumb style={{ margin: "16px 0" }}>
+              <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+            </Breadcrumb>
+            <div
+              className="site-layout-background"
+              style={{ padding: 24, minHeight: 360 }}
+            >
+              Bill is a cat.
+            </div>
+          </Content>
+          <Footer style={{ textAlign: "center" }}>
+            Ant Design ©2018 Created by Ant UED
+          </Footer>
+        </Layout>
       </Layout>
     </React.Fragment>
     // <div className="App">
