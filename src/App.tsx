@@ -1,30 +1,34 @@
-import { Breadcrumb, Button, Layout, Menu } from "antd";
-import { Content, Footer, Header } from "antd/lib/layout/layout";
+import { Breadcrumb, Button, Card, Col, Layout, Menu, Row } from "antd";
+import { Content } from "antd/lib/layout/layout";
 import Sider from "antd/lib/layout/Sider";
 import SubMenu from "antd/lib/menu/SubMenu";
 import React, { useState } from "react";
 import "./App.css";
 import NumpadWithScreen from "./Numpad/NumpadWithScreen";
 import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
   UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
   DesktopOutlined,
   PieChartOutlined,
   TeamOutlined,
   FileOutlined,
+  ShoppingCartOutlined,
 } from "@ant-design/icons";
+import Meta from "antd/lib/card/Meta";
 
 function App() {
   const total = "25.5";
   const [menuCollapsed, setMenuCollapsed] = useState(false);
+  const gridStyle = {
+    width: "25%",
+    textAlign: "center",
+    cursor: "pointer",
+  };
 
   return (
     <React.Fragment>
       <Layout style={{ minHeight: "100vh" }} hasSider>
         <Sider
+          theme="light"
           collapsible
           collapsed={menuCollapsed}
           onCollapse={(collapsed) => {
@@ -33,13 +37,12 @@ function App() {
         >
           <div className="logo" />
           <Menu
-            theme="dark"
             defaultSelectedKeys={["1"]}
             mode="inline"
             inlineCollapsed={menuCollapsed}
           >
-            <Menu.Item key="1" icon={<PieChartOutlined />}>
-              Option 1
+            <Menu.Item key="1" icon={<ShoppingCartOutlined />}>
+              Checkout
             </Menu.Item>
             <Menu.Item key="2" icon={<DesktopOutlined />}>
               Option 2
@@ -59,22 +62,53 @@ function App() {
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }} />
-          <Content style={{ margin: "0 16px" }}>
-            <Breadcrumb style={{ margin: "16px 0" }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
+          <Content style={{ margin: "16px" }}>
             <div
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
             >
-              Bill is a cat.
+              <Row>
+                <Col span={6}>
+                  <Card
+                    hoverable
+                    bordered={false}
+                    style={{ width: 240 }}
+                    cover={
+                      <img
+                        alt="example"
+                        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                      />
+                    }
+                  >
+                    <Meta
+                      title="Europe Street beat"
+                      description="www.instagram.com"
+                    />
+                  </Card>
+                </Col>
+                <Col span={6}>
+                  <Card
+                    hoverable
+                    bordered={false}
+                    style={{ width: 240 }}
+                    cover={
+                      <img
+                        alt="example"
+                        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                      />
+                    }
+                  >
+                    <Meta
+                      title="Europe Street beat"
+                      description="www.instagram.com"
+                    />
+                  </Card>
+                </Col>
+                <Col span={6}>col-6</Col>
+                <Col span={6}>col-6</Col>
+              </Row>
             </div>
           </Content>
-          <Footer style={{ textAlign: "center" }}>
-            Ant Design ©2018 Created by Ant UED
-          </Footer>
         </Layout>
       </Layout>
     </React.Fragment>
