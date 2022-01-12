@@ -4,6 +4,7 @@ import Sider from "antd/lib/layout/Sider";
 import SubMenu from "antd/lib/menu/SubMenu";
 import React, { useState } from "react";
 import "./App.css";
+import { useMediaQuery } from "react-responsive";
 import NumpadWithScreen from "./Numpad/NumpadWithScreen";
 import {
   UserOutlined,
@@ -18,11 +19,38 @@ import Meta from "antd/lib/card/Meta";
 function App() {
   const total = "25.5";
   const [menuCollapsed, setMenuCollapsed] = useState(false);
-  const gridStyle = {
-    width: "25%",
-    textAlign: "center",
+  const cardStyle = {
     cursor: "pointer",
+    marginLeft: "2px",
+    marginRight: "2px",
   };
+  const big = useMediaQuery({ minWidth: 1100 });
+  const medium = useMediaQuery({ minWidth: 800 });
+
+  const tiles = [];
+  let max;
+  if (big) {
+    max = 4;
+  } else if (medium) {
+    max = 3;
+  } else {
+    max = 2;
+  }
+
+  for (let i = 1; i <= max; i++) {
+    tiles.push(
+      <Col span={24 / max - 2} style={cardStyle}>
+        <Card
+          bordered={false}
+          cover={
+            <img alt="example" src="https://dummyimage.com/150x150/000/fff" />
+          }
+        >
+          <Meta title="Europe Street beat" description="www.instagram.com" />
+        </Card>
+      </Col>
+    );
+  }
 
   return (
     <React.Fragment>
@@ -67,49 +95,12 @@ function App() {
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
             >
-              <Row>
-                <Col span={6}>
-                  <Card
-                    hoverable
-                    bordered={false}
-                    style={{ width: 240 }}
-                    cover={
-                      <img
-                        alt="example"
-                        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                      />
-                    }
-                  >
-                    <Meta
-                      title="Europe Street beat"
-                      description="www.instagram.com"
-                    />
-                  </Card>
-                </Col>
-                <Col span={6}>
-                  <Card
-                    hoverable
-                    bordered={false}
-                    style={{ width: 240 }}
-                    cover={
-                      <img
-                        alt="example"
-                        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                      />
-                    }
-                  >
-                    <Meta
-                      title="Europe Street beat"
-                      description="www.instagram.com"
-                    />
-                  </Card>
-                </Col>
-                <Col span={6}>col-6</Col>
-                <Col span={6}>col-6</Col>
-              </Row>
+              <Row>{tiles}</Row>
+              <Row>{tiles}</Row>
             </div>
           </Content>
         </Layout>
+        <Sider theme="light"></Sider>
       </Layout>
     </React.Fragment>
     // <div className="App">
